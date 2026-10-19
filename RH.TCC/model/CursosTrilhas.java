@@ -8,12 +8,15 @@ public class CursosTrilhas {
     private String cargaHoraria;
     private String fornecedor;
     private String status;
+    private String dataInicio;
+    private String dataConclusao;
 
     public CursosTrilhas() {
     }
 
     public CursosTrilhas(String area, String funcionario, String curso,
-            String cargaHoraria, String fornecedor, String status) {
+            String cargaHoraria, String fornecedor, String status,
+            String dataInicio, String dataConclusao) {
 
         this.area = area;
         this.funcionario = funcionario;
@@ -21,6 +24,8 @@ public class CursosTrilhas {
         this.cargaHoraria = cargaHoraria;
         this.fornecedor = fornecedor;
         this.status = status;
+        this.dataInicio = dataInicio;
+        this.dataConclusao = dataConclusao;
     }
 
     public String getArea() {
@@ -69,5 +74,21 @@ public class CursosTrilhas {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getDataInicio() {
+        return dataInicio;
+    }
+
+    public void setDataInicio(String dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public String getDataConclusao() {
+        return dataConclusao;
+    }
+
+    public void setDataConclusao(String dataConclusao) {
+        this.dataConclusao = dataConclusao;
     }
 }

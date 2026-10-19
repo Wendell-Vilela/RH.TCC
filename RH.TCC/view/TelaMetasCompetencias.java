@@ -23,9 +23,8 @@ public class TelaMetasCompetencias extends JPanel {
 
     private final JTable tabela = new JTable();
 
-    // Botoes
-    private final JButton novo = new JButton("Novo");
     private final JButton salvar = new JButton("Salvar");
+    private final JButton atualizar = new JButton("Atualizar");
     private final JButton excluir = new JButton("Excluir");
     private final JButton limpar = new JButton("Limpar");
 
@@ -62,8 +61,8 @@ public class TelaMetasCompetencias extends JPanel {
 
         JPanel botoes = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-        botoes.add(novo);
         botoes.add(salvar);
+        botoes.add(atualizar);
         botoes.add(excluir);
         botoes.add(limpar);
 
@@ -78,9 +77,17 @@ public class TelaMetasCompetencias extends JPanel {
             "Status"
         };
 
-        DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
+        DefaultTableModel modelo = new DefaultTableModel(colunas, 0) {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public boolean isCellEditable(int linha, int coluna) {
+                return false;
+            }
+        };
 
         tabela.setModel(modelo);
+        tabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         JScrollPane scrollTabela = new JScrollPane(tabela);
 
@@ -126,8 +133,6 @@ public class TelaMetasCompetencias extends JPanel {
         painel.add(campo, g);
     }
 
-    // Getters dos campos
-
     public JTextField getId() {
         return id;
     }
@@ -164,10 +169,8 @@ public class TelaMetasCompetencias extends JPanel {
         return tabela;
     }
 
-    // Getters dos botoes
-
-    public JButton getNovo() {
-        return novo;
+    public JButton getAtualizar() {
+        return atualizar;
     }
 
     public JButton getSalvar() {

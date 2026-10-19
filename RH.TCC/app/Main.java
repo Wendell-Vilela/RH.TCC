@@ -3,7 +3,7 @@ package app;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-import view.TelaMenu;
+import view.TelaAvaliacao;
 
 public class Main {
 
@@ -16,7 +16,7 @@ public class Main {
 	          } catch (Exception e) {
 	            e.printStackTrace();
 	          }
-	          new TelaMenu().setVisible(true);
+	          new TelaAvaliacao().setVisible(true);
 	        }
 	      }
 	    );

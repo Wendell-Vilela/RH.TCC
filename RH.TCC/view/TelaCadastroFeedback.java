@@ -8,20 +8,36 @@ public class TelaCadastroFeedback extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
-    
     private final JTextField id = new JTextField(7);
     private final JTextField funcionario = new JTextField(20);
+
     private final JComboBox<String> competenciaFeedback = new JComboBox<>(
-    		new String[] {"Escolha a competência avaliada", "Comunicação", "Entrega", "Qualidade", "Liderança"}
-    		);
+        new String[]{
+            "Escolha a competência avaliada",
+            "Comunicação",
+            "Entrega",
+            "Qualidade",
+            "Liderança"
+        }
+    );
+
     private final JTextField nomeAvaliador = new JTextField(20);
+
     private final JComboBox<String> tipoAvaliador = new JComboBox<>(
-    		new String[] {"Selecione o tipo da avaliação", "Auto avaliação", "Avaliação do Gestor", "Avaliação de Pares"});    
+        new String[]{
+            "Selecione o tipo da avaliação",
+            "Auto avaliação",
+            "Avaliação do Gestor",
+            "Avaliação de Pares"
+        }
+    );
+
+    private final JTextField notaAvaliacao = new JTextField(20);
 
     private final JTable tabela = new JTable();
 
-    // Botoes
     private final JButton salvar = new JButton("Salvar");
+    private final JButton atualizar = new JButton("Atualizar");
     private final JButton excluir = new JButton("Excluir");
     private final JButton limpar = new JButton("Limpar");
 
@@ -36,45 +52,55 @@ public class TelaCadastroFeedback extends JPanel {
         JPanel formulario = new JPanel(new GridBagLayout());
 
         formulario.setBorder(
-            BorderFactory.createTitledBorder("Cadastro de Curso")
+            BorderFactory.createTitledBorder("Cadastro de Feedback")
         );
 
         GridBagConstraints g = new GridBagConstraints();
         g.insets = new Insets(5, 5, 5, 5);
 
-        componente(formulario, g, 0, "Codigo:", id);
+        componente(formulario, g, 0, "Código:", id);
         componente(formulario, g, 1, "Funcionário:", funcionario);
         componente(formulario, g, 2, "Competência:", competenciaFeedback);
-        componente(formulario, g, 4, "Nome do avaliador:", nomeAvaliador);
-        componente(formulario, g, 5, "Tipo do avaliador:", tipoAvaliador);
+        componente(formulario, g, 3, "Nome do avaliador:", nomeAvaliador);
+        componente(formulario, g, 4, "Tipo da avaliação:", tipoAvaliador);
+        componente(formulario, g, 5, "Nota:", notaAvaliacao);
 
         id.setEditable(false);
-
 
         JPanel botoes = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
         botoes.add(salvar);
+        botoes.add(atualizar);
         botoes.add(excluir);
         botoes.add(limpar);
 
         String[] colunas = {
-            "Codigo",
+            "Código",
             "Funcionário",
             "Competência avaliada",
             "Avaliador",
-            "Tipo do Avaliador"
+            "Tipo da avaliação",
+            "Nota"
         };
 
-        DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
+        DefaultTableModel modelo = new DefaultTableModel(colunas, 0) {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public boolean isCellEditable(int linha, int coluna) {
+                return false;
+            }
+        };
 
         tabela.setModel(modelo);
+        tabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         JScrollPane scrollTabela = new JScrollPane(tabela);
 
         JPanel painelTabela = new JPanel(new BorderLayout());
 
         painelTabela.setBorder(
-            BorderFactory.createTitledBorder("Cursos Cadastrados")
+            BorderFactory.createTitledBorder("Feedbacks Cadastrados")
         );
 
         painelTabela.add(scrollTabela, BorderLayout.CENTER);
@@ -113,8 +139,6 @@ public class TelaCadastroFeedback extends JPanel {
         painel.add(campo, g);
     }
 
-    // Getters dos campos
-
     public JTextField getId() {
         return id;
     }
@@ -135,15 +159,20 @@ public class TelaCadastroFeedback extends JPanel {
         return tipoAvaliador;
     }
 
+    public JTextField getNotaAvaliacao() {
+        return notaAvaliacao;
+    }
 
     public JTable getTabela() {
         return tabela;
     }
 
-    // Getters dos botoes
-
     public JButton getSalvar() {
         return salvar;
+    }
+
+    public JButton getAtualizar() {
+        return atualizar;
     }
 
     public JButton getExcluir() {
