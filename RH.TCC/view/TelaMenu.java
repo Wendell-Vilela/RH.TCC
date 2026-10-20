@@ -9,7 +9,7 @@ public class TelaMenu extends JFrame {
 
     public TelaMenu() {
 
-        setTitle("ERP - Gestão de Funcionários");
+        setTitle("ERP - Dashboard/Kauã");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -23,27 +23,17 @@ public class TelaMenu extends JFrame {
         // Adiciona cada tela do módulo
         abas.addTab(
             "Avaliação e Desenvolvimento",
-            new TelaAvaliacao()
+            new ViewFuncionariosAtivos()
         );
 
         abas.addTab(
             "Recrutamento e Seleção",
-            new TelaRecrutamento()
+            new ViewNovasAdmissoes()
         );
 
         abas.addTab(
             "Dashboards",
-            new TelaDashboard()
-        );
-
-        abas.addTab(
-            "Gestão de Funcionários",
-            new TelaCadastroFuncionario()
-        );
-
-        abas.addTab(
-            "Relatórios e KPI's",
-            new TelaRelatorio()
+            new ViewTaxaTurnover()
         );
 
 
