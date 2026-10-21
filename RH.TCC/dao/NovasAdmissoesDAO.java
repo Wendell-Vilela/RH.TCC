@@ -71,7 +71,7 @@ public class NovasAdmissoesDAO {
                                 "JOIN cargo cg ON f.id_cargo = cg.id_cargo " +
                                 "WHERE f.st_func = 'Ativo'";
 
-        try (Connection conn = ConnectionFactory.conectar();
+        try (Connection conn = util.conexao.abrir() ;
              PreparedStatement stmt = conn.prepareStatement(sqlAlternativa);
              ResultSet rs = stmt.executeQuery()) {
 
