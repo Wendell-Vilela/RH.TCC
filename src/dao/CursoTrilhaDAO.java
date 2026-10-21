@@ -1,14 +1,14 @@
 package dao;
 
-import model.CursosTrilhas;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.CursosTrilhas;
 
-public class CursosTrilhasDAO {
+public class CursoTrilhaDAO {
 
     public List<CursosTrilhas> listarCursosPorFuncionario(String nomeFuncionario) {
         

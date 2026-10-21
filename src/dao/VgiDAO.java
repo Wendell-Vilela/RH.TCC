@@ -1,12 +1,12 @@
 package dao;
 
-import model.VGI;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import model.VGI;
 
-public class VGIDAO {
+public class VgiDAO {
 
     public VGI buscarIndicadoresGerais() {
         

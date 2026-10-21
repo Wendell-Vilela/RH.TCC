@@ -61,4 +61,8 @@ public class Feedback {
     public void setFeedback(String feedback) {
         this.feedback = feedback;
     }
+
+    public void setDescricao(String string) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
