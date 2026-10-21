@@ -20,7 +20,6 @@ public class ViewTaxaTurnover extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
-    // Componentes preservados para injeção dinâmica pelo Controller
     private JLabel lblTurnoverGlobal = new JLabel("0.0%");
     private JLabel lblSaidasVoluntarias = new JLabel("0");
     private JLabel lblSaidasInvoluntarias = new JLabel("0");
@@ -122,7 +121,6 @@ public class ViewTaxaTurnover extends JPanel {
         return card;
     }
 
-    // --- MÉTODOS PÚBLICOS MANTIDOS PARA O CONTROLLER ---
 
     public void atualizarMetrics(String turnoverGlobal, String voluntarias, String involuntarias, String estabilidade) {
         lblTurnoverGlobal.setText(turnoverGlobal);
@@ -179,7 +177,6 @@ public class ViewTaxaTurnover extends JPanel {
         lblAvisoRodape.setText(mensagem);
     }
 
-    // --- COMPONENTE DO GRÁFICO DINÂMICO ---
 
     public class GraficoPizza extends JPanel {
         private static final long serialVersionUID = 1L;
