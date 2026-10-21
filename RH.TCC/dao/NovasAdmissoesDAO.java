@@ -20,7 +20,7 @@ public class NovasAdmissoesDAO {
                      "WHERE f.st_func = 'Ativo' " +
                      "GROUP BY s.nm_setor";
 
-        try (Connection conn = ConnectionFactory.conectar();
+        try (Connection conn = util.conexao.abrir();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
