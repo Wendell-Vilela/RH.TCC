@@ -15,7 +15,7 @@ public class FuncionariosAtivosDAO {
         
         String sqlHeadcount = "SELECT COUNT(*) as total FROM funcionario WHERE st_func = 'Ativo'";
 
-        try (Connection conn =util.conexao.abrir();
+        try (Connection conn = util.conexao.abrir();
              PreparedStatement stmt = conn.prepareStatement(sqlHeadcount);
              ResultSet rs = stmt.executeQuery()) {
 
@@ -39,7 +39,7 @@ public class FuncionariosAtivosDAO {
                               "GROUP BY s.nm_setor " +
                               "ORDER BY qtd DESC LIMIT 1";
 
-        try (Connection conn = ConnectionFactory.conectar();
+        try (Connection conn = util.conexao.abrir();
              PreparedStatement stmt = conn.prepareStatement(sqlMaiorArea);
              ResultSet rs = stmt.executeQuery()) {
 
