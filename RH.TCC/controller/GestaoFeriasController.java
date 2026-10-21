@@ -1,46 +1,58 @@
+
 package controller;
 
-import java.util.*;
-
-import javax.swing.*;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 import model.GestaoFerias;
-
 import view.TelaGestaoFerias;
-
 import dao.GestaoFeriasDAO;
 
 public class GestaoFeriasController {
-    private TelaGestaoFerias tela;
-    private GestaoFeriasDAO dao;
+
+    private final TelaGestaoFerias tela;
+    private final GestaoFeriasDAO dao;
 
     public GestaoFeriasController(TelaGestaoFerias tela) {
         this.tela = tela;
         this.dao = new GestaoFeriasDAO();
     }
 
-
     public void carregarDados() {
+        new Thread(() -> {
+            try {
+                List<GestaoFerias> lista =
+                    dao.listarGestaoFeriasPorDepartamento();
 
-        try {
-            List<GestaoFerias> lista = dao.ListarTodos();
-            tela.AtualizarTabela(lista);
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(
-                tela, "Erro ao carregar dados de Gestão de Férias: "
-                + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE
-            );
-        }
+                SwingUtilities.invokeLater(() -> {
+                    tela.AtualizarTabela(lista);
+
+                    if (lista.isEmpty()) {
+                        JOptionPane.showMessageDialog(
+                            tela,
+                            "Nenhum dado de férias encontrado.",
+                            "Aviso",
+                            JOptionPane.INFORMATION_MESSAGE
+                        );
+                    }
+                });
+
+            } catch (Exception e) {
+                SwingUtilities.invokeLater(() ->
+                    JOptionPane.showMessageDialog(
+                        tela,
+                        "Erro ao carregar dados de Gestão de Férias: "
+                            + e.getMessage(),
+                        "Erro",
+                        JOptionPane.ERROR_MESSAGE
+                    )
+                );
+            }
+        }).start();
     }
 
     public void atualizarDados() {
-        if(SwingUtilities.isEventDispatchThread()) {
-            carregarDados();
-        } else {
-            SwingUtilities.invokeLater(this::carregarDados);
-        }
+        carregarDados();
     }
-
-
 }
