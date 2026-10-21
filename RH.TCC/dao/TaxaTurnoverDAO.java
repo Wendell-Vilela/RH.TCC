@@ -21,7 +21,7 @@ public class TaxaTurnoverDAO {
                      "LEFT JOIN funcionario f ON s.id_setor = f.id_setor " +
                      "GROUP BY s.nm_setor";
 
-        try (Connection conn = ConnectionFactory.conectar();
+        try (Connection conn = util.conexao.abrir();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
