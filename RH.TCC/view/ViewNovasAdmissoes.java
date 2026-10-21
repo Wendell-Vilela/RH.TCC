@@ -18,7 +18,6 @@ public class ViewNovasAdmissoes extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
-    // Componentes mapeados para integração com o Controller
     private JLabel lblTotalAdmissoes;
     private JTable tabelaAdmissoes;
     private DefaultTableModel modelTabela;
@@ -27,7 +26,6 @@ public class ViewNovasAdmissoes extends JPanel {
     public ViewNovasAdmissoes() {
         setLayout(new BorderLayout(15, 15));
 
-        // Borda padronizada
         TitledBorder borda = BorderFactory.createTitledBorder(
                 BorderFactory.createEtchedBorder(),
                 "NOVAS ADMISSÕES E CONTRATAÇÕES",
@@ -41,18 +39,18 @@ public class ViewNovasAdmissoes extends JPanel {
                 borda
         ));
 
-        // Conteúdo central dividido 50/50
+
         JPanel painelConteudo = new JPanel(new GridLayout(1, 2, 15, 0));
 
-        // LADO ESQUERDO: Gráfico Dinâmico de Barras por Setor
+
         painelConteudo.add(criarPainelGraficoContainer());
 
-        // LADO DIREITO: Tabela com dados completos dos admitidos
+
         painelConteudo.add(criarPainelTabela());
 
         add(painelConteudo, BorderLayout.CENTER);
 
-        // RODAPÉ INFORMATIVO
+
         add(criarRodape(), BorderLayout.SOUTH);
     }
 
@@ -66,7 +64,7 @@ public class ViewNovasAdmissoes extends JPanel {
                 new Font("SansSerif", Font.BOLD, 12)
         ));
 
-        // Painel interno onde as barras serão injetadas dinamicamente
+
         painelGraficoBarras = new JPanel(new GridLayout(1, 0, 15, 0));
         
         container.add(painelGraficoBarras, BorderLayout.CENTER);
@@ -83,7 +81,7 @@ public class ViewNovasAdmissoes extends JPanel {
                 new Font("SansSerif", Font.BOLD, 12)
         ));
 
-        // Todos os campos necessários para o ERP de RH
+
         String[] colunas = {"ID", "Nome Colaborador", "CPF", "Data Admissão", "Departamento", "Cargo / Função"};
 
         modelTabela = new DefaultTableModel(colunas, 0) {
@@ -128,7 +126,7 @@ public class ViewNovasAdmissoes extends JPanel {
         return rodape;
     }
 
-    // --- MÉTODOS PÚBLICOS EXIGIDOS PELO CONTROLLER ---
+
 
     public JLabel getLabelTotalAdmissoes() {
         return lblTotalAdmissoes;
