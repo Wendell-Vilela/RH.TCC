@@ -23,14 +23,13 @@ public class ControllerDashboard {
         this.conexao = con;
     }
 
-    // Carrega o dashboard completo de uma só vez (sem filtros de data)
     public void carregarTodosOsDados() {
         carregarModuloTurnover();
         carregarModuloFuncionariosAtivos();
         carregarModuloNovasAdmissoes();
     }
 
-    // 1. MÓDULO TURNOVER
+    //MÓDULO TURNOVER
     public void carregarModuloTurnover() {
         if (viewTurnover == null) return;
         viewTurnover.limparTabela();
@@ -66,7 +65,6 @@ public class ControllerDashboard {
                 estabilidade
             );
 
-            // Preenche a Tabela por Departamento
             try (PreparedStatement stmt = conexao.prepareStatement(sqlSetores); 
                  ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
@@ -86,7 +84,7 @@ public class ControllerDashboard {
         }
     }
 
-    // 2. MÓDULO FUNCIONÁRIOS ATIVOS
+    //MÓDULO FUNCIONÁRIOS ATIVOS
     public void carregarModuloFuncionariosAtivos() {
         if (viewAtivos == null) return;
         viewAtivos.limparTabela();
@@ -121,7 +119,7 @@ public class ControllerDashboard {
         }
     }
 
-    // 3. MÓDULO NOVAS ADMISSÕES (GERAL / SEM DATA)
+    //MÓDULO NOVAS ADMISSÕES 
     public void carregarModuloNovasAdmissoes() {
         if (viewAdmissoes == null) return;
         viewAdmissoes.limparTabela();
@@ -167,7 +165,6 @@ public class ControllerDashboard {
         }
     }
 
-    // EXIBIÇÃO DE ERRO PADRONIZADA
     private void exibirErro(String titulo, Exception e) {
         JOptionPane.showMessageDialog(null, "Falha ao processar dados no banco:\n" + e.getMessage(), titulo, JOptionPane.ERROR_MESSAGE);
     }
