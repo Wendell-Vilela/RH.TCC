@@ -14,7 +14,7 @@ public class FuncionariosAtivosDAO {
         
         String sqlHeadcount = "SELECT COUNT(*) as total FROM funcionario WHERE st_func = 'Ativo'";
 
-        try (Connection conn = ConnectionFactory.conectar();
+        try (Connection conn =util.conexao.abrir();
              PreparedStatement stmt = conn.prepareStatement(sqlHeadcount);
              ResultSet rs = stmt.executeQuery()) {
 
