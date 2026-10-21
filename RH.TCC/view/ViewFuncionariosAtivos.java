@@ -19,8 +19,6 @@ import javax.swing.table.DefaultTableModel;
 public class ViewFuncionariosAtivos extends JPanel {
 
     private static final long serialVersionUID = 1L;
-
-    // Componentes para Injeção Dinâmica de Dados pelo Controller
     private JLabel lblTotalAtivos;
     private JLabel lblCustoMensalTotal;
     private JLabel lblUltimaAtualizacao;
@@ -32,7 +30,7 @@ public class ViewFuncionariosAtivos extends JPanel {
     public ViewFuncionariosAtivos() {
         setLayout(new BorderLayout(15, 15));
 
-        // Borda principal padronizada
+    
         TitledBorder borda = BorderFactory.createTitledBorder(
                 BorderFactory.createEtchedBorder(),
                 "QUADRO GERAL DE FUNCIONÁRIOS ATIVOS",
@@ -46,10 +44,10 @@ public class ViewFuncionariosAtivos extends JPanel {
                 borda
         ));
 
-        // CONTEÚDO PRINCIPAL
+        
         add(criarConteudoCentro(), BorderLayout.CENTER);
 
-        // RODAPÉ INFORMATIVO
+       
         add(criarRodape(), BorderLayout.SOUTH);
     }
 
@@ -119,7 +117,7 @@ public class ViewFuncionariosAtivos extends JPanel {
                 new Font("SansSerif", Font.BOLD, 12)
         ));
 
-        // Colunas exigidas pela documentação de integração
+      
         String[] colunas = {
             "Departamento / Setor", 
             "Ativos no Setor", 
@@ -174,14 +172,12 @@ public class ViewFuncionariosAtivos extends JPanel {
         return rodape;
     }
 
-    //Atualiza os cards superiores de totais.
-
+    
     public void atualizarCards(String totalAtivos, String custoMensalFormatado) {
         lblTotalAtivos.setText(totalAtivos);
         lblCustoMensalTotal.setText(custoMensalFormatado);
     }
 
-    //Limpa todas as linhas da tabela de departamentos.
     
     public void limparTabela() {
         modelTabela.setRowCount(0);
