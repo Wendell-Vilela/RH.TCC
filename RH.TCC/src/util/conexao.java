@@ -11,7 +11,7 @@ public final class conexao {
 
 
   private static final String URL =
-    "jdbc:mysql://localhost:3306/biblioteca?useUnicode=true&characterEncoding=UTF-8&useSSL=false";/*deve mudar de acordo com o localhost*/
+    "jdbc:mysql://localhost:3306/rh?useUnicode=true&characterEncoding=UTF-8&useSSL=false";/*deve mudar de acordo com o localhost*/
   private static final String USUARIO = "root";
   private static final String SENHA = "";
 
